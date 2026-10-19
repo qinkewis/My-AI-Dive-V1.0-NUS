@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My AI Drive</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232b59c3'/><path d='M9 8h9l5 5v11H9z' fill='white'/><path d='M18 8v5h5' fill='%23b9c9ee'/></svg>">
+<link rel="stylesheet" href="/static/styles.css">
+<script src="/static/vendor/pdf.min.js"></script>
+<script src="/static/vendor/marked.min.js"></script>
+<script src="/static/vendor/purify.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><span class="logo"></span>My AI Drive</div>
+    <div class="search">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4 4"/></svg>
+      <input id="globalSearch" type="search" placeholder="Search titles, authors and full text…  ( / )" autocomplete="off">
+    </div>
+    <div class="topactions">
+      <button class="btn" id="uploadBtn" title="Import PDF files or a whole folder">⤒ Import ▾</button>
+      <button class="btn" data-go="discover">⌕ Find papers</button>
+      <button class="btn primary" id="askLibraryBtn">✦ Ask AI</button>
+      <span class="pill" id="nusPill" title="NUS Libraries connection">NUS ·</span>
+      <span class="pill" id="agentPill" title="Claude Code agent">Agent ·</span>
+    </div>
+    <input type="file" id="fileInput" accept="application/pdf,.pdf" multiple hidden>
+    <input type="file" id="attachInput" accept="application/pdf,.pdf" hidden>
+  </header>
+
+  <div class="main">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="listrail" id="listRail" title="Show the paper list"><span>⟩</span><span class="lbl">Paper list</span></div>
+    <section class="center" id="center"></section>
+    <div class="resizer" id="resizer" title="Drag to resize"></div>
+    <section class="preview" id="preview"></section>
+  </div>
+
+  <div class="dropveil" id="dropveil"><div>Drop PDFs to import into <b id="dropTarget">Library</b></div></div>
+  <div class="selpop" id="selpop" hidden>
+    <button data-sel="ask">Ask AI</button><button data-sel="explain">Explain</button><button data-sel="translate">Translate</button><button data-sel="note">+ Note</button><button data-sel="word" title="Save to your vocabulary notebook">+ Word</button><button data-sel="copy">Copy</button>
+  </div>
+  <div class="menu" id="menu" hidden></div>
+  <div class="toasts" id="toasts"></div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
